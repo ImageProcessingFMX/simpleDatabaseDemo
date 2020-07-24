@@ -4,8 +4,7 @@ uses
   System.StartUpCopy,
   FMX.Forms,
   Unit_FD.FMX in 'Unit_FD.FMX.pas' {Form_dbtest},
-  Unit_DatabaseTypes in '..\..\..\..\code_shared_libraries\Unit_DatabaseTypes.pas',
-  TCheckListBox.FMX in '..\..\..\..\code_shared_libraries\TCheckListBox.FMX.pas';
+  Unit_dbfunctions in 'Unit_dbfunctions.pas';
 
 {$R *.res}
 
