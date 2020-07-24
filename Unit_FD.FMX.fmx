@@ -1,0 +1,226 @@
+object Form_dbtest: TForm_dbtest
+  Left = 0
+  Top = 0
+  Caption = 'Connect to a Database ( using FIREDAC)'
+  ClientHeight = 675
+  ClientWidth = 1110
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object edt_server: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 1
+    Text = 'localhost\sqlexpress'
+    Position.X = 64.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object edt_databasename: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 2
+    Text = 'DSS_AI4DI_test_temp'
+    Position.X = 256.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object pnl1: TPanel
+    Align = Bottom
+    Position.Y = 627.000000000000000000
+    Size.Width = 1110.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object statusbar: TLabel
+      Position.X = 24.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 1017.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'statusbar'
+      TabOrder = 1
+    end
+  end
+  object lbl1: TLabel
+    Position.X = 64.000000000000000000
+    Position.Y = 32.000000000000000000
+    Text = 'Server'
+    TabOrder = 4
+  end
+  object lbl2: TLabel
+    Position.X = 256.000000000000000000
+    Position.Y = 32.000000000000000000
+    Text = 'Database'
+    TabOrder = 5
+  end
+  object btn_ConnectDatabase: TButton
+    Position.X = 792.000000000000000000
+    Position.Y = 192.000000000000000000
+    Size.Width = 265.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    Text = '[ 3  ] Connect to Database'
+    OnClick = btn_ConnectDatabaseClick
+  end
+  object btn_getOBJTable: TButton
+    Position.X = 792.000000000000000000
+    Position.Y = 240.000000000000000000
+    Size.Width = 265.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Text = '[ 4  ] Get Table content'
+    OnClick = btn_getOBJTableClick
+  end
+  object StringGrid1: TStringGrid
+    CanFocus = True
+    ClipChildren = True
+    Position.X = 64.000000000000000000
+    Position.Y = 304.000000000000000000
+    Size.Width = 993.000000000000000000
+    Size.Height = 265.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 16
+    Viewport.Width = 989.000000000000000000
+    Viewport.Height = 240.000000000000000000
+  end
+  object lst_servernames: TListBox
+    Position.X = 64.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 185.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 23
+    OnDblClick = lst_servernamesDblClick
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 165.000000000000000000
+    Viewport.Height = 181.000000000000000000
+  end
+  object lst_Databases: TListBox
+    Position.X = 256.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 185.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 31
+    OnDblClick = lst_DatabasesDblClick
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 221.000000000000000000
+    Viewport.Height = 181.000000000000000000
+  end
+  object lbl3: TLabel
+    Position.X = 512.000000000000000000
+    Position.Y = 40.000000000000000000
+    Text = 'Table names'
+    TabOrder = 32
+  end
+  object edt_tablename: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 33
+    Text = 'obj'
+    Position.X = 512.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object lst_databasetablelist: TListBox
+    Position.X = 512.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 185.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 34
+    OnDblClick = lst_databasetablelistDblClick
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 221.000000000000000000
+    Viewport.Height = 181.000000000000000000
+  end
+  object btn_Connect2Server: TButton
+    Position.X = 792.000000000000000000
+    Position.Y = 144.000000000000000000
+    Size.Width = 265.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 35
+    Text = ' [ 2 ] Connect 2 Server'
+    OnClick = btn_Connect2ServerClick
+  end
+  object btn_LoadServerNames: TButton
+    Position.X = 792.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 265.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 43
+    Text = '[ 1 ] Load Server Names'
+    OnClick = btn_LoadServerNamesClick
+  end
+  object dlgOpenFile: TOpenDialog
+    Left = 792
+    Top = 24
+  end
+  object con1: TFDConnection
+    Params.Strings = (
+      'Database=DSS_AI4DI_test_temp'
+      'Server=mucsad26'
+      'OSAuthent=Yes'
+      'DriverID=MSSQL')
+    LoginPrompt = False
+    Left = 56
+    Top = 224
+  end
+  object FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink
+    Left = 672
+    Top = 56
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 824
+    Top = 144
+  end
+  object FDQuery1: TFDQuery
+    Connection = con1
+    SQL.Strings = (
+      '')
+    Left = 720
+    Top = 192
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDQuery1
+    ScopeMappings = <>
+    Left = 784
+    Top = 168
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 652
+    Top = 181
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGrid1
+      Columns = <>
+    end
+  end
+  object FDPhysODBCDriverLink1: TFDPhysODBCDriverLink
+    Left = 680
+    Top = 104
+  end
+end
