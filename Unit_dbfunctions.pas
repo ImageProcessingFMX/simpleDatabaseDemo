@@ -2,6 +2,36 @@ unit Unit_dbfunctions;
 
 interface
 
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+   System.IOUtils,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
+  FireDAC.Phys, FireDAC.FMXUI.Wait, Data.DB, FireDAC.Comp.Client,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet;
+
+
+
+procedure ConnecttoDatabase(servername,
+  databasename: String; aConnection: TFDConnection);  overload;
+
+procedure ConnecttoDatabase(servername, databasename,
+  Username, Password: String; aConnection: TFDConnection); overload;
+
+procedure ConnecttoServer(aConnection: TFDConnection;
+  servername: String);
+
+procedure GetAllDatabases(servername: String;
+  DatabaseList: TStringList);  overload;
+
+procedure GetAllDatabases(aConnection: TFDConnection;
+  DatabaseList: TStringList);   overload;
+
+procedure GetAllTables(aConnection: TFDConnection;
+  databasename: string; Tablelist: TStringList);
+
 implementation
 
 
