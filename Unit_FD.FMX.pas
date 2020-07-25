@@ -4,18 +4,19 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes,
-  System.Variants,
+  System.Variants,  Unit_dbfunctions,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.Edit, System.IOUtils,
-  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
-  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
-  FireDAC.Phys, FireDAC.FMXUI.Wait, Data.DB, FireDAC.Comp.Client,
-  FireDAC.Phys.MSSQLDef, FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL,
-  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet, System.Rtti, FMX.Grid.Style, Data.Bind.EngExt,
+
+   System.Rtti, FMX.Grid.Style, Data.Bind.EngExt,
   FMX.Bind.DBEngExt, FMX.Bind.Grid, System.Bindings.Outputs, FMX.Bind.Editors,
   Data.Bind.Components, Data.Bind.Grid, Data.Bind.DBScope, FMX.ScrollBox,
-  FMX.Grid, FMX.Layouts, FMX.ListBox, FireDAC.Phys.ODBCDef, FireDAC.Phys.ODBC;
+  FMX.Grid, FMX.Layouts, FMX.ListBox, FireDAC.Phys.ODBCDef, FireDAC.Phys.ODBC,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
+  FireDAC.Phys, FireDAC.Phys.MSSQL, FireDAC.Phys.MSSQLDef, FireDAC.FMXUI.Wait,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Phys.ODBCBase;
 
 type
   TForm_dbtest = class(TForm)
@@ -44,6 +45,7 @@ type
     btn_Connect2Server: TButton;
     btn_LoadServerNames: TButton;
     dlgOpenFile: TOpenDialog;
+    lbl4: TLabel;
     procedure btn_ConnectDatabaseClick(Sender: TObject);
     procedure btn_getOBJTableClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
