@@ -11,12 +11,12 @@ uses
    System.Rtti, FMX.Grid.Style, Data.Bind.EngExt,
   FMX.Bind.DBEngExt, FMX.Bind.Grid, System.Bindings.Outputs, FMX.Bind.Editors,
   Data.Bind.Components, Data.Bind.Grid, Data.Bind.DBScope, FMX.ScrollBox,
-  FMX.Grid, FMX.Layouts, FMX.ListBox, FireDAC.Phys.ODBCDef, FireDAC.Phys.ODBC,
-  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
-  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
-  FireDAC.Phys, FireDAC.Phys.MSSQL, FireDAC.Phys.MSSQLDef, FireDAC.FMXUI.Wait,
-  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.Phys.ODBCBase;
+  FMX.Grid, FMX.Layouts, FMX.ListBox, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MSSQL,
+  FireDAC.Phys.MSSQLDef, FireDAC.FMXUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Data.Bind.Controls, Fmx.Bind.Navigator;
 
 type
   TForm_dbtest = class(TForm)
@@ -29,15 +29,11 @@ type
     btn_ConnectDatabase: TButton;
     con1: TFDConnection;
     btn_getOBJTable: TButton;
-    FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink;
     DataSource1: TDataSource;
     FDQuery1: TFDQuery;
-    StringGrid1: TStringGrid;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
-    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     lst_servernames: TListBox;
-    FDPhysODBCDriverLink1: TFDPhysODBCDriverLink;
     lst_Databases: TListBox;
     lbl3: TLabel;
     edt_tablename: TEdit;
@@ -46,6 +42,11 @@ type
     btn_LoadServerNames: TButton;
     dlgOpenFile: TOpenDialog;
     lbl4: TLabel;
+    btn1: TButton;
+    pnl2: TPanel;
+    strngrd1: TStringGrid;
+    bndnvgtr1: TBindNavigator;
+    lnkgrdtdtsrcBindSourceDB: TLinkGridToDataSource;
     procedure btn_ConnectDatabaseClick(Sender: TObject);
     procedure btn_getOBJTableClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -54,13 +55,13 @@ type
     procedure lst_DatabasesDblClick(Sender: TObject);
     procedure lst_databasetablelistDblClick(Sender: TObject);
     procedure btn_LoadServerNamesClick(Sender: TObject);
+    procedure btn1Click(Sender: TObject);
   private
     { Private declarations }
     Fservername: String;
     Fdatabasename: String;
     Fusername: String;
     FPassword: String;
-
     FTablename: string;
 
     Fpath : TPath;
@@ -82,13 +83,22 @@ implementation
 
 
 
+procedure TForm_dbtest.btn1Click(Sender: TObject);
+var Databasename, User, Password : string ;
+begin
+   ///  http://docwiki.embarcadero.com/Libraries/Sydney/en/FireDAC.Phys.MSSQL.TFDPhysMSSQLDriverLink
+   ///
+   ///
+   Databasename:='testdb03' ;
 
+   //User:='testuser';
+   //Password :='testuser';
 
+   User:='root';
+   Password :='';
 
-
-
-
-
+   ConnecttoServerMYSQL (con1, Fservername, Databasename, User, Password );
+end;
 
 procedure TForm_dbtest.btn_Connect2ServerClick(Sender: TObject);
 var
@@ -148,6 +158,9 @@ begin
     FTablename := edt_tablename.text;
 
     conStatus := con1.Connected;
+
+    FDQuery1.SQL.Clear;
+
     if conStatus = TRUE then
     begin
       FDQuery1.SQL.Add('select * from ' + FTablename);
@@ -159,7 +172,7 @@ begin
       ShowMessage('No DB Connection established.');
     end;
   finally;
-     statusbar.text := ' done :-) ?? ';
+     statusbar.text := ' done :-)   using ' +  FTablename ;
   end;
 
 end;
